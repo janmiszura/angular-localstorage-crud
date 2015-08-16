@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Angular CRUD</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="starter-template.css" rel="stylesheet">
+
+</head>
+
+<body ng-app="contatosApp" ng-controller="contatosController">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Angular CRUD</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container">
+
+    <h1>Contatos</h1>
+
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contato in contatos">
+            <th scope="row">{{$index+1}}</th>
+            <td>{{contato.nome}}</td>
+            <td>{{contato.email}}</td>
+            <td>{{contato.telefone}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <!--button type="button" class="btn btn-primary" ng-click="novo()">Novo</button-->
+      <button type="button" class="btn btn-primary" ng-click="inserir5Contatos()">Inserir 5 contatos</button>
+      <button type="button" class="btn btn-danger" ng-click="excluirTodos()">Excluir todos os contatos</button>
+
+</div><!-- /.container -->
+
+
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
