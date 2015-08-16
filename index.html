@@ -43,7 +43,7 @@
     <table class="table table-bordered">
         <thead>
           <tr>
-            <th>#</th>
+            <th>ID</th>
             <th>Nome</th>
             <th>E-mail</th>
             <th>Telefone</th>
@@ -51,7 +51,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="contato in contatos">
-            <th scope="row">{{$index+1}}</th>
+            <th>{{contato.id}}</th>
             <td>{{contato.nome}}</td>
             <td>{{contato.email}}</td>
             <td>{{contato.telefone}}</td>

@@ -18,6 +18,10 @@ contatosApp.factory('contatoService', function() {
 
   factory.inserir = function(contato) {
 
+    if( ! contato.id ) {
+      contato.id = factory.nextId();
+    }
+
     var contatos = factory.listar();
 
     if( ! contatos ) {
@@ -28,6 +32,20 @@ contatosApp.factory('contatoService', function() {
 
     localStorage.setItem('contatos', JSON.stringify(contatos));
 
+  };
+
+  factory.nextId = function() {
+
+    var nextid = localStorage.getItem('nextid');
+    if( ! nextid ) {
+      nextid = 0;
+    }
+
+    nextid++;
+
+    localStorage.setItem('nextid', nextid);
+
+    return nextid;
   };
 
   factory.excluirTodos = function() {
@@ -50,7 +68,6 @@ contatosApp.controller('contatosController', ['$scope', 'contatoService', functi
       for(var i=1;i<=5;i++) {
 
         contatoService.inserir({
-          id: new Date().getTime(),
           nome: 'nome '+new Date().getTime(),
           email: 'email'+new Date().getTime()+'@email.com',
           telefone: '(62) 99999999'
