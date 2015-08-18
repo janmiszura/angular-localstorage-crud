@@ -6,6 +6,21 @@ contatosApp.factory('contatoService', function() {
 
   var factory = {};
 
+  factory.consultarPorId = function(id) {
+
+    var retorno = null;
+
+    var contatos = factory.listar();
+
+    angular.forEach(contatos, function(contato) {
+      if( contato.id === id ) {
+        retorno = contato;
+      }
+    });
+
+    return retorno;
+  };
+
   factory.listar = function() {
 
     var contatosJson = localStorage.getItem('contatos');
@@ -52,6 +67,24 @@ contatosApp.factory('contatoService', function() {
     localStorage.setItem('contatos', '[]');
   };
 
+  factory.excluir = function(contatoParaExcluir) {
+
+    var indexParaExcluir = null;
+
+    var contatos = factory.listar();
+
+    angular.forEach(contatos, function(contato, index) {
+      if( contato.id === contatoParaExcluir.id ) {
+        indexParaExcluir = index;
+      }
+    });
+    console.log(indexParaExcluir);
+    if( indexParaExcluir ) {
+      contatos.splice(indexParaExcluir, 1);
+      localStorage.setItem('contatos', JSON.stringify(contatos));
+    }
+  };
+
   return factory;
 });
 
@@ -82,6 +115,14 @@ contatosApp.controller('contatosController', ['$scope', 'contatoService', functi
     $scope.excluirTodos = function() {
 
       contatoService.excluirTodos();
+
+      $scope.listar();
+
+    };
+
+    $scope.excluir = function(contato) {
+
+      contatoService.excluir(contato);
 
       $scope.listar();
 

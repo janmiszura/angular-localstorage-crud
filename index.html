@@ -43,18 +43,20 @@
     <table class="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
+            <th class="text-center">ID</th>
             <th>Nome</th>
-            <th>E-mail</th>
-            <th>Telefone</th>
+            <th class="text-center">E-mail</th>
+            <th class="text-center">Telefone</th>
+            <th> &nbsp; </th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="contato in contatos">
-            <th>{{contato.id}}</th>
+            <th class="text-center">{{contato.id}}</th>
             <td>{{contato.nome}}</td>
-            <td>{{contato.email}}</td>
-            <td>{{contato.telefone}}</td>
+            <td class="text-center">{{contato.email}}</td>
+            <td class="text-center">{{contato.telefone}}</td>
+            <td class="text-center"><a href="javascript:;" ng-click="excluir(contato)"><i class="glyphicon glyphicon-trash"></i></a></td>
           </tr>
 
         </tbody>
