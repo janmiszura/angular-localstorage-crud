@@ -62,13 +62,51 @@
         </tbody>
       </table>
 
-      <!--button type="button" class="btn btn-primary" ng-click="novo()">Novo</button-->
+      <button type="button" class="btn btn-primary" ng-click="novo()">Novo</button>
       <button type="button" class="btn btn-primary" ng-click="inserir5Contatos()">Inserir 5 contatos</button>
       <button type="button" class="btn btn-danger" ng-click="excluirTodos()">Excluir todos os contatos</button>
 
 </div><!-- /.container -->
 
 
+<div class="modal fade" id="contatoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <form ng-submit="salvar()">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edi&ccedil;&atilde;o de contato</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" placeholder="Nome" ng-model="contato.nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="E-mail" ng-model="contato.email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="form-control" id="telefone" placeholder="Telefone" ng-model="contato.telefone">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+
+      </form>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

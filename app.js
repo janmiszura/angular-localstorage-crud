@@ -92,7 +92,31 @@ contatosApp.controller('contatosController', ['$scope', 'contatoService', functi
 
     $scope.novo = function() {
 
-      $('#contatoEdicaoModal').modal('show');
+      $scope.instanciarNovo();
+
+      $('#contatoModal').modal('show');
+
+    };
+
+    $scope.instanciarNovo = function() {
+
+      $scope.contato = {};
+
+    };
+
+    $scope.salvar = function() {
+
+      if( ! $scope.contato.id ) {
+        contatoService.inserir($scope.contato);
+      } else {
+        contatoService.atualizar($scope.contato);
+      }
+
+      $scope.listar();
+
+      $scope.instanciarNovo();
+
+      $('#contatoModal').modal('hide');
 
     };
 
